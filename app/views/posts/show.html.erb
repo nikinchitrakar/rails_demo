@@ -1,0 +1,36 @@
+
+<p id="notice"><%= notice %></p>
+
+<p>
+	  <strong>Title:</strong>
+	  <%= @post.title %>
+</p>
+<p>
+	  <strong>Content:</strong>
+	  <%= @post.details %>
+</p>
+<%= form_for Comment.new, :url => post_comments_path(@post) do |f| %>
+  
+  <p>
+    <%= f.label :comment %><br>
+    <%= f.text_area :comment, class: "form-control" %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+<% @comments.reverse.each do |c| %>
+		
+	<p>
+	  <strong class="label label-primary"><%= c.user.username  %>:</strong>
+	  <%= c.comment  %>
+	  <span class="text-muted"><%= time_ago_in_words(c.created_at) %> ago</span>
+  </p>	
+	
+<% end %>
+
+<%= will_paginate @comments %>
+
+
+<%= link_to 'Back', posts_path %>
