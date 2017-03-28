@@ -21,6 +21,17 @@ class CommentsController < ApplicationController
 		end
 
 	end
+
+	def destroy
+		
+		@post = Post.find(params[:post_id])
+		@comment.destroy
+    	respond_to do |format|
+      		format.html { redirect_to post_url(@post), notice: 'Comment was successfully destroyed.' }
+      		format.json { render :show, status: :ok, location: @comment }
+      	end
+	end
+
 	private
 	def set_comment
       @comment = Comment.find(params[:id])

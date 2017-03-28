@@ -53,9 +53,10 @@ class PostsController < ApplicationController
   	end
 	
 	def show
-		@comments = @post.comment.paginate(page: params[:page], per_page: 3).order(id: 'desc')
+		@comments = @post.comment.paginate(page: params[:page], per_page: 5).order(id: 'desc')
   	end
 
+  	
 	private
 
 	def post_params

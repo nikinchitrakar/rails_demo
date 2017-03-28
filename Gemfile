@@ -60,3 +60,4 @@ gem 'devise'
 gem 'awesome_print', '~> 1.7'
 
 gem 'will_paginate', '~> 3.1.0'
+
