@@ -1,0 +1,8 @@
+<% if user_signed_in? && current_user.likes?(post) %>
+  <%= link_to "unlike", post_heart_path(post.id, heart.id),remote: true, method: :delete %>
+<% else %>
+  <%= link_to "like", post_hearts_path(post.id),remote: true, method: :post%>
+<% end %>
+
+
+

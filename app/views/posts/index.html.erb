@@ -28,7 +28,9 @@
                     
                     <td class="text-center"><a class='btn btn-info btn-xs'><span class="glyphicon glyphicon-remove"></span><%= link_to 'Destroy', post,remote: true, method: :delete, data: { confirm: 'Are you sure?' } %></a></td>
                   <% end %>
-                 
+                  <td class="text-center"><%= render partial: "likes", locals: {post: post,heart: Heart.where(user_id: current_user.id, post_id: post.id).first} %></td>
+                  <% # Heart.where(post_id: post.id).count %>
+                  <td class="text-center"><%= post.liking_users.count  %></td>
 <br>
               </tr>
         <% end %>
@@ -36,3 +38,9 @@
     </table>
     </div>
 </div>
+
+<!-- <div class="well">
+<%= current_user.liked_posts.each do |post| %>
+  <h1><%= post.title %></h1><hr>
+<% end %>
+</div> -->

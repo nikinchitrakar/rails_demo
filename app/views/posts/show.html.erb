@@ -21,8 +21,6 @@
 	  		<%= link_to 'Destroy', post_comment_path(@post, c),remote: true, method: :delete, data: { confirm: 'Are you sure?' } %></a></td>
 	  	<% end %>
 	</p>	
-	
-
 <% end %>
 
 <%= will_paginate @comments %>
@@ -30,6 +28,7 @@
 <%= form_for Comment.new,remote: true, :url => post_comments_path(@post) do |f| %>
   
   <p>
+  
     <%= f.label :comment %><br>
     <%= f.text_area :comment, class: "form-control" %>
   </p>
